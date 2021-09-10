@@ -7,57 +7,72 @@ pn = {
     'Faisal': '6666666666',
     'Layla': '7777777777'
 }
-nameOrnumber = input('Do you want to search by name or number? ')
-if nameOrnumber == 'name' or nameOrnumber == 'Name':
-    name = input('Name:')
+options = input('Welcome! \ntype 1 to search by number \ntype 2 to search by name \ntype 3 to add a new number \n:')
 
-    pn.get(name)
-    if pn.get(name) == None:
-        print('Name Does NOT Exist! ')
+if options == '2':
+        name = input('Name:')
 
-    else:
-        print(name, 'Number is: ', pn[name])
-        print('Thank you for using our program!')
+        pn.get(name)
+        if pn.get(name) == None:
+            print('Name Does NOT Exist! ')
+            newName = input('Type 1 to add a new name:  ')
+            if newName == '1':
+                addNewname = input('Type the New Name Here: ')
+                pn.get(addNewname)
+                if pn.get(addNewname) == None:
+                    newPn = input('Type the Phone Number Here: ')
+                    if len(newPn) != 10:
+                        print('The Number is Invalid')
 
-    if pn.get(name) == None:
-        newName = input('Do You Want to Add a New Name? ')
-        if (newName == 'yes') or  (newName == 'Yes'):
-            addNewname = input('Type the New Name Here: ')
-            pn.get(addNewname)
-            if pn.get(addNewname) == None:
-                newPn = input('Type the Phone Number Here: ')
-                if len(newPn) != 10:
-                    print('The Number is Invalid')
-                    print('Thank you for using our program!')
+
+                    else:
+                        pn[addNewname] = newPn
+                        print('the name', addNewname, 'with the number', newPn, 'was added!')
+                        print('Thank you for using our program!')
                 else:
-                    pn[addNewname] = newPn
-                    print('the name', addNewname, 'with the number', newPn, 'was added!')
+                    print('Name Already Exists!')
                     print('Thank you for using our program!')
-            else:
-                print('Name Already Exists!')
-                print('Thank you for using our program!')
+        else:
+            print(name, 'Number is: ', pn[name])
+            print('Thank you for using our program!')
+
+elif options == '3':
+                addNewname = input('Type the New Name Here: ')
+                pn.get(addNewname)
+                if pn.get(addNewname) == None:
+                    newPn = input('Type the Phone Number Here: ')
+                    if len(newPn) != 10:
+                        print('The Number is Invalid')
+                        print('Thank you for using our program!')
+                    else:
+                        pn[addNewname] = newPn
+                        print('the name', addNewname, 'with the number', newPn, 'was added!')
+                        print('Thank you for using our program!')
+                else:
+                    print('Name Already Exists!')
+                    print('Thank you for using our program!')
+
+
+elif options == '1':
+        number = input('Number: ')
+        if number in pn.values():
+            for esm, r8m in pn.items():
+                if number == r8m:
+                    print(number,'is', esm,"'s number")
+                    print('Thank you for using our program!')
 
         else:
-            print('Thank you for using our program!')
-elif nameOrnumber == 'number' or nameOrnumber == 'Number':
-    number = input('Number: ')
-    if number in pn.values():
-        for esm, r8m in pn.items():
-            if number == r8m:
-                print(number, 'is', esm, 'number')
-                print('Thank you for using our program!')
+            print('Number does NOT Exist! ')
+            newNumber = input('Type 1 to add a new Number:  ')
+            if newNumber == '1':
+                addNewNumber = input('Type New Number Here: ')
+                if addNewNumber in pn.values():
+                    print('Number Already Exists!')
+                elif len(addNewNumber) != 10:
 
-    else:
-        print('Number does NOT Exist! ')
-        newNumber = input('Do you want to add a new number? ')
-        if newNumber == 'yes' or newNumber == 'Yes':
-            addNewNumber = input('Type New Number Here: ')
-            if addNewNumber in pn.values():
-                print('Number Already Exists!')
-
-            else:
-                newName = input('Type the name here: ')
-                pn[newName] = addNewNumber
-                print('the number', addNewNumber, 'for', newName, 'was added!')
-                print('Thank you for using our program!')
-
+                    print("Invalid Number")
+                else:
+                    newName = input('Type the name here: ')
+                    pn[newName] = addNewNumber
+                    print('the number', addNewNumber, 'for', newName, 'was added!')
+                    print('Thank you for using our program!')
